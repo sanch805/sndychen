@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sandy's Portfolio</title>
+  <meta name="description" content="Welcome to my little space! ✩°｡⋆⸜ ✮">
+      <!-- Open Graph / Facebook -->
+      <meta property="og:type" content="website">
+      <meta property="og:title" content="Sandy's Portfolio">
+      <meta property="og:description" content="Welcome to my little space! ✩°｡⋆⸜ ✮">
+      <!-- Twitter -->
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="Sandy's Portfolio">
+      <meta name="twitter:description" content="Welcome to my little space! ✩°｡⋆⸜ ✮">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #faf9f7;
+      --text: #1a1a1a;
+      --muted: #888;
+      --accent: #c96b6b;
+      --card-bg: #f2efeb;
+      --border: #e0dbd3;
+      --nav-h: 64px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(250,249,247,0.85);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .nav-logo img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding-top: calc(var(--nav-h) + 80px);
+      padding-bottom: 60px;
+      padding-left: 40px;
+      padding-right: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.2;
+      font-weight: 400;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .hero-sub a {
+      color: var(--text);
+      text-decoration: underline;
+      text-decoration-color: var(--border);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .hero-sub a:hover { text-decoration-color: var(--accent); }
+
+    .scroll-hint {
+      display: block;
+      margin-top: 8px;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    /* ─── PROJECTS ─── */
+    #projectlists {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      text-decoration: none;
+      color: var(--text);
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.09);
+    }
+
+    .project-card img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-info {
+      padding: 18px 20px 20px;
+    }
+
+    .project-info h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+
+    .project-tags {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px 40px 80px;
+    }
+
+    .cta-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+      font-weight: 400;
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    .cta-section h2 a {
+      text-decoration: none;
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+
+    .cta-section h2 a.archive {
+      color: #0D7CD6;
+      border-bottom: 2px solid transparent;
+      transition: opacity 0.2s, border-bottom-color 0.2s;
+    }
+
+    .cta-section h2 a.about {
+      color: #FF008D;
+      border-bottom: 2px solid transparent;
+      transition: opacity 0.2s, border-bottom-color 0.2s;
+    }
+
+    .cta-section h2 a.archive:hover { border-bottom-color: #0D7CD6; }
+    .cta-section h2 a.about:hover { border-bottom-color: #FF008D; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 100%;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      .hero, #projectlists, .cta-section { padding-left: 20px; padding-right: 20px; }
+      #projectlists { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" style="position: fixed; inset: 0; z-index: 99999; height: 100vh; width: 100%; pointer-events: none"></canvas>
+
+  <script>
+      const canvas = document.querySelector("#canvas");
+      const ctx = canvas.getContext("2d");
+  
+      // Set initial canvas size
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+  
+      const blocks = [];
+      let lastMove = Date.now();
+      let color = getCursorColor();  // Initialize with the current color mode
+  
+      function getCursorColor() {
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? '#fff' : '#000';
+      }
+  
+      const drawSquare = (x, y) => {
+        blocks.push({x, y, time: Date.now()});
+  
+        while (blocks.length > 12) {
+          blocks.shift();
+        }
+  
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+        for (let block of blocks) {
+          ctx.fillStyle = color;
+          ctx.fillRect(block.x - window.scrollX, block.y - window.scrollY, 4, 4);
+        }
+      };
+  
+      document.addEventListener("mousemove", (e) => {
+        lastMove = Date.now();
+        drawSquare(e.pageX, e.pageY);
+      });
+  
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+  
+      // Listen for changes in color scheme and update cursor color
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+        color = e.matches ? '#fff' : '#000';  // Set color to white if dark mode, black if light mode
+      });
+  
+      // Clear old blocks after inactivity
+      setInterval(() => {
+        if (Date.now() - lastMove > 400) {
+          blocks.shift();
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          for (let block of blocks) {
+            ctx.fillStyle = color;
+            ctx.fillRect(block.x - window.scrollX, block.y - window.scrollY, 4, 4);
+          }
+        }
+      }, 50);
+  </script>  
+
+<canvas id="canvas" style="position: fixed; inset: 0; z-index: 99999; height: 100vh; width: 100%; pointer-events: none"></canvas>
+
+<script>
+    const canvas = document.querySelector("#canvas");
+    const ctx = canvas.getContext("2d");
+
+    // Set initial canvas size
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const blocks = [];
+    let lastMove = Date.now();
+    let color = getCursorColor();  // Initialize with the current color mode
+
+    function getCursorColor() {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches ? '#fff' : '#000';
+    }
+
+    const drawSquare = (x, y) => {
+      blocks.push({x, y, time: Date.now()});
+
+      while (blocks.length > 12) {
+        blocks.shift();
+      }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let block of blocks) {
+        ctx.fillStyle = color;
+        ctx.fillRect(block.x - window.scrollX, block.y - window.scrollY, 4, 4);
+      }
+    };
+
+    document.addEventListener("mousemove", (e) => {
+      lastMove = Date.now();
+      drawSquare(e.pageX, e.pageY);
+    });
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // Listen for changes in color scheme and update cursor color
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+      color = e.matches ? '#fff' : '#000';  // Set color to white if dark mode, black if light mode
+    });
+
+    // Clear old blocks after inactivity
+    setInterval(() => {
+      if (Date.now() - lastMove > 400) {
+        blocks.shift();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let block of blocks) {
+          ctx.fillStyle = color;
+          ctx.fillRect(block.x - window.scrollX, block.y - window.scrollY, 4, 4);
+        }
+      }
+    }, 50);
+</script>
+
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">
+      <img src="https://framerusercontent.com/images/6OQemouum7EQS7OPs8uAmVg6mI.png" alt="Sandy Chen" />
+      Sandy Chen
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://sndychen.com/projects">Works</a></li>
+      <li><a href="https://sndychen.com/about">About</a></li>
+      <li><a href="https://drive.google.com/file/d/1mw_3eeaa9kIRQnEYy9dhX5vZ4MyBX1fj/view?usp=sharing" target="_blank">Resume</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>⋆𐙚₊˚⊹♡ Greetings ! ( *• ᴗ - )⭑.ᐟ ⋆౨ৎ˚⟡˖ ࣪<br>I'm Sandy, a graphic &amp; UI/UX designer</h1>
+    <p class="hero-sub">
+      <a href="#projectlists">Check out some of my featured works!</a>
+    </p>
+    <span class="scroll-hint">↓↓↓</span>
+  </section>
+
+  <!-- PROJECT GRID -->
+  <div id="projectlists">
+    <a class="project-card" href="https://sndychen.com/projects/wilma-theater">
+      <img src="https://framerusercontent.com/images/DEvztgnKI5vjNVdprutvfgfag0k.png" alt="WILMA Theater Rebranding" />
+      <div class="project-info">
+        <h3>WILMA Theater Rebranding</h3>
+        <p class="project-tags">/Brand &amp; Visual Identity</p>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://sndychen.com/projects/craigslist">
+      <img src="https://framerusercontent.com/images/VJP0abHzNnXgMHuMKfGRqNHqN8.png" alt="Craigslist Onboarding Flow" />
+      <div class="project-info">
+        <h3>Craigslist Onboarding Flow</h3>
+        <p class="project-tags">/Web &amp; App Design /Case Study</p>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://sndychen.com/projects/persephone-books">
+      <img src="https://framerusercontent.com/images/7kTe5YKrcD79Les6p1AkArhn7Do.jpg" alt="Persephone Books Redesign" />
+      <div class="project-info">
+        <h3>Persephone Books</h3>
+        <p class="project-tags">/Logo &amp; Web Design</p>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://sndychen.com/projects/ikea">
+      <img src="https://framerusercontent.com/images/56MtDxrsU62dp2wApFjEInKwvY.jpeg" alt="IKEA UI Redesign" />
+      <div class="project-info">
+        <h3>IKEA</h3>
+        <p class="project-tags">/App Redesign</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Take a peek into my <a class="archive" href="https://sndychen.com/projects">archive!</a><br> Here's to learn more <a class="about" href="https://sndychen.com/about">about</a> me too!</h2>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© Sandy Chen — Made with ♡ and ✧˖°‧₊˚</span>
+    <div class="footer-links">
+      <a href="/cdn-cgi/l/email-protection#3447555a575c5104000c01745359555d581a575b59">Email</a>
+      <a href="https://www.linkedin.com/in/sanch805/" target="_blank">LinkedIn</a>
+      <a href="https://www.instagram.com/sndyf1sh/" target="_blank">Instagram</a>
